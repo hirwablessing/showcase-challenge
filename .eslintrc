@@ -1,0 +1,6 @@
+{
+  "rules": { "semi": [2, "never"], "react/jsx-indent-props": [2, 2] },
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
+  "parserOptions": { "ecmaVersion": 6, "ecmaFeatures": { "jsx": true } },
+  "plugins": ["react"]
+}

@@ -1,0 +1,152 @@
+.mymodal {
+  position: fixed;
+  top: 3%;
+  left: 20%;
+  /* transform: translate(-50%, -50%); */
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  width: 60%;
+  max-height: 100vh;
+}
+
+.myoverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+/**
+* border-radius
+*/
+
+.btn,
+.logo,
+.form-control,
+.card,
+.list-group {
+  border-radius: 6px;
+}
+
+/**
+* put logo text vertical center
+*/
+
+.logo h2 {
+  margin-top: -3px;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo h2 {
+    margin-top: 30px;
+  }
+}
+
+/**
+*   logo animation
+*/
+
+.logo {
+  width: 30wh;
+  height: 15vh;
+  color: #fff;
+  background-image: url("/header.svg");
+}
+
+.card {
+  background-color: #262626;
+}
+
+.card-header {
+  color: whitesmoke;
+}
+
+.lead {
+  color: #000;
+  margin-left: 30px;
+}
+
+.g-font {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+}
+
+.list-group-item {
+  border: none;
+  background-color: rgb(241, 244, 253);
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  box-sizing: border-box;
+  border: 5px white solid;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+  transform: translatey(0px);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-20px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+
+.typewriter {
+  color: bisque;
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.15em;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
