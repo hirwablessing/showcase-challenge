@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import "../../styles.css";
 import Form from "../Form/Form";
-import { HashLink as Link } from "react-router-hash-link";
 import { useSelector, useDispatch } from 'react-redux';
 import { createEducationInfo, deleteEducationInfo, selectEducation } from "../../features/user/userSlice"
 import Card from "../Card/Card";
@@ -16,6 +16,7 @@ interface Props {
 }
 
 const Dashboard: React.FC<Props> = ({ user }) => {
+  console.log("here is the user", user);
   // viable states
   const [isOpen, setIsOpen] = useState(false);
   const [details, setDetails] = useState<any>([]);
@@ -72,18 +73,11 @@ const Dashboard: React.FC<Props> = ({ user }) => {
       <ul className="list-group">
         {details.map((ed: any, i: any) => (
           <li className="list-group-item" key={i}>
-            <Link
-              className="g-font"
-              smooth
-              key={i}
-              to={`/dashboard/#${ed["degree"]}`}
-            >
-              <span
-                style={{ backgroundColor: "yellow" }}
-              >{`${ed["start"]} to ${ed["end"]}`}</span>
-              <br />
-              {`${ed["degree"]} | ${ed["name"]}`}
-            </Link>
+            <span
+              style={{ backgroundColor: "yellow" }}
+            >{`${ed["start"]} to ${ed["end"]}`}</span>
+            <br />
+            {`${ed["name"]}`}
           </li>
         ))}
       </ul>

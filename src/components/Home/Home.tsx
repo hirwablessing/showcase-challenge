@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
-import { RouteComponentProps, Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
+import { RouteComponentProps, Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { login, deletUserHistory } from "../../features/user/userSlice";
+import { login, deletUserHistory, selectUserFromLocalStorage } from "../../features/user/userSlice";
 
+// Properties of all interface components
 // Properties of all interface components
 interface Props extends RouteComponentProps<any> {
   getName: () => void;
@@ -15,6 +16,7 @@ const Home: React.FC<Props> = ({ getName, history }) => {
   const [name, setName] = useState("");
   const [disable, setDisable] = useState(false);
   const dispatch = useDispatch();
+  const curentUser = useSelector(selectUserFromLocalStorage);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -22,7 +24,7 @@ const Home: React.FC<Props> = ({ getName, history }) => {
 
   // state set for variable render cases
   const buttonDisable = () => {
-    if (localStorage.getItem("name")) {
+    if (curentUser) {
       setDisable(true);
     } else {
       setDisable(false);
@@ -43,8 +45,6 @@ const Home: React.FC<Props> = ({ getName, history }) => {
   };
 
   const handleClick = () => {
-    // localStorage.removeItem("name");
-    // localStorage.removeItem("education");
     //dispatch an action to delete all user history
     dispatch(deletUserHistory())
     setDisable(false);
@@ -88,7 +88,7 @@ const Home: React.FC<Props> = ({ getName, history }) => {
           <div className="row">
             <div className="col">
               <button className="btn btn-outline-success" onClick={handleClick}>
-                Not {`${localStorage.getItem("name")} ?`}
+                Not {`${curentUser} ?`}
               </button>
             </div>
             <div className="col text-right">
@@ -110,7 +110,7 @@ const Home: React.FC<Props> = ({ getName, history }) => {
     >
       <h3 style={{ marginBottom: "50px" }}>
         Hi{" "}
-        {`${localStorage.getItem("name") ? localStorage.getItem("name") : ""}`}!
+        {`${curentUser ? curentUser : ""}`}!
         Welcome to your <span className="typewriter">Education Showcase</span>
       </h3>
       {showForm()}

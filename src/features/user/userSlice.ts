@@ -43,7 +43,8 @@ export const userSlice = createSlice({
 
 export const { login, deletUserHistory, createEducationInfo, deleteEducationInfo } = userSlice.actions;
 
-export const selectUser = (state: RootState) => state.user.username;
+// export const selectUser = (state: RootState) => state.user.username;
+export const selectUserFromLocalStorage = (state: RootState) => localStorage.getItem("name")
 export const selectEducation = (state: RootState) => localStorage.getItem("education")
 
 export default userSlice.reducer;

@@ -3,21 +3,20 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { useSelector } from 'react-redux';
-import { selectUser } from './features/user/userSlice'
+import { selectUserFromLocalStorage } from './features/user/userSlice'
 
 const Routes: React.FC = () => {
   const [name, setName] = useState<string>("");
-  const currentUser = useSelector(selectUser);
-
-  console.log("cureent user: ", currentUser)
+  const UserFromLocalStorage = useSelector(selectUserFromLocalStorage) || ""
+  console.log("User from local storage", UserFromLocalStorage);
 
   useEffect(() => {
     getName();
   }, []);
 
   // getting name from Home and sending it to Dashboard
-  const getName = () => {
-    setName(localStorage.getItem("name") || "");
+  const getName = async () => {
+    await setName(UserFromLocalStorage || "");
   };
 
   return (
@@ -31,7 +30,7 @@ const Routes: React.FC = () => {
         <Route
           exact
           path="/dashboard"
-          render={() => <Dashboard user={name} />}
+          render={() => <Dashboard user={UserFromLocalStorage} />}
         />
       </Switch>
     </BrowserRouter>

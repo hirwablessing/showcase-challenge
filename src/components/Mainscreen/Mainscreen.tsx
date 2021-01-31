@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom"
 import Layout from "../Layout/Layout";
 import Modal from "react-modal";
 import "./styles.css";
 import Form from "../Form/Form";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { HashLink as Link } from "react-router-hash-link";
 import Card from "../Card/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -67,12 +67,7 @@ const Dashboard: React.FC<Props> = ({ user }) => {
       <ul className="list-group">
         {details.map((ed: any, i: any) => (
           <li className="list-group-item" key={i}>
-            <Link
-              className="g-font"
-              smooth
-              key={i}
-              to={`/dashboard/#${ed["name"]}`}
-            >{`${ed["degree"]} @ ${ed["name"]}`}</Link>
+            {` ${ed["name"]}`}
           </li>
         ))}
       </ul>
