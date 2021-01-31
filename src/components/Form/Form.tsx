@@ -13,7 +13,7 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   // state varibales
   const [universities, setUniversities] = useState([]);
   const [degree, setDegree] = useState([]);
-  const [fos, setFos] = useState([]);
+  const [fieldOfStudy, setFieldOfStudy] = useState([]);
   const [name, setName] = useState<any>({});
   const [values, setValues] = useState<any>({
     elearn: "",
@@ -55,13 +55,13 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   };
 
   // fetch all study fields from API when initial loading of Component
-  const fetchFos = async () => {
+  const fetchFieldOfStudy = async () => {
     try {
       const rawResponse = await fetch(
         "https://showwcase-challenge.free.beeceptor.com/study"
       );
       const response = await rawResponse.json();
-      setFos(response);
+      setFieldOfStudy(response);
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +70,7 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   useEffect(() => {
     fetchUniversities();
     fetchDegree();
-    fetchFos();
+    fetchFieldOfStudy();
   }, []);
 
   // handleChange method for all form elements
@@ -137,7 +137,7 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
         </label>
         <Autocomplete
           id="study"
-          options={fos}
+          options={fieldOfStudy}
           renderInput={(params) => <TextField {...params} variant="outlined" />}
           onChange={handleChange}
           freeSolo

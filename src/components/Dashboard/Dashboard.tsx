@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./Layout";
+import Layout from "../Layout/Layout";
 import Modal from "react-modal";
-import "./styles.css";
-import Form from "./Form";
+import "../../styles.css";
+import Form from "../Form/Form";
+import { HashLink as Link } from "react-router-hash-link";
+import { useSelector, useDispatch } from 'react-redux';
+import { createEducationInfo, deleteEducationInfo, selectEducation } from "../../features/user/userSlice"
+import Card from "../Card/Card";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { HashLink as Link } from "react-router-hash-link";
-import Card from "./Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 interface Props {
@@ -18,14 +20,16 @@ const Dashboard: React.FC<Props> = ({ user }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [details, setDetails] = useState<any>([]);
   const [change, setChange] = useState(false);
+  const dispatch = useDispatch();
+  const availableEducation = useSelector(selectEducation)
 
   useEffect(() => {
     items();
   }, [change]);
 
   const items = () => {
-    if (localStorage.getItem("education")) {
-      setDetails(JSON.parse(localStorage.getItem("education") || ""));
+    if (availableEducation) {
+      setDetails(JSON.parse(availableEducation || ""));
     }
   };
 
@@ -33,12 +37,13 @@ const Dashboard: React.FC<Props> = ({ user }) => {
   const getEducationDetails = async (detail: object) => {
     var newArray = [];
     if (typeof window !== undefined) {
-      if (localStorage.getItem("education")) {
-        newArray = JSON.parse(localStorage.getItem("education") || "");
+      if (availableEducation) {
+        newArray = JSON.parse(availableEducation || "");
       }
     }
     newArray.unshift(detail);
-    localStorage.setItem("education", JSON.stringify(newArray));
+    //dispatch an action to create a new education
+    dispatch(createEducationInfo(JSON.stringify(newArray)))
     setChange(!change);
   };
 
@@ -53,8 +58,8 @@ const Dashboard: React.FC<Props> = ({ user }) => {
         details.splice(index, 1);
       }
     });
-    // resetting localstorage after deletions
-    localStorage.setItem("education", JSON.stringify(details));
+    // dispatch an action to reset localstorage after deletions
+    dispatch(deleteEducationInfo(JSON.stringify(details)))
 
     // restate all
     setChange(!change);
@@ -71,8 +76,14 @@ const Dashboard: React.FC<Props> = ({ user }) => {
               className="g-font"
               smooth
               key={i}
-              to={`/dashboard/#${ed["name"]}`}
-            >{`${ed["degree"]} @ ${ed["name"]}`}</Link>
+              to={`/dashboard/#${ed["degree"]}`}
+            >
+              <span
+                style={{ backgroundColor: "yellow" }}
+              >{`${ed["start"]} to ${ed["end"]}`}</span>
+              <br />
+              {`${ed["degree"]} | ${ed["name"]}`}
+            </Link>
           </li>
         ))}
       </ul>
@@ -125,7 +136,7 @@ const Dashboard: React.FC<Props> = ({ user }) => {
           closeTimeoutMS={500}
         >
           <div className="text-center" style={{ fontWeight: "bold" }}>
-            Education Form
+            🏫 Education Form
           </div>
           <Form
             toggleModal={toggleModal}

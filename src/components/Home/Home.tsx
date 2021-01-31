@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./Layout";
+import Layout from "../Layout/Layout";
 import { RouteComponentProps, Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { login, deletUserHistory } from "../../features/user/userSlice";
 
 // Properties of all interface components
 interface Props extends RouteComponentProps<any> {
@@ -12,6 +14,7 @@ const Home: React.FC<Props> = ({ getName, history }) => {
   // viable state
   const [name, setName] = useState("");
   const [disable, setDisable] = useState(false);
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -32,15 +35,18 @@ const Home: React.FC<Props> = ({ getName, history }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    localStorage.setItem("name", name);
+    //dispatch an action to store the current user
+    dispatch(login(String(name)))
     getName();
     history.push("/dashboard");
     setDisable(true);
   };
 
   const handleClick = () => {
-    localStorage.removeItem("name");
-    localStorage.removeItem("education");
+    // localStorage.removeItem("name");
+    // localStorage.removeItem("education");
+    //dispatch an action to delete all user history
+    dispatch(deletUserHistory())
     setDisable(false);
   };
 
@@ -57,14 +63,14 @@ const Home: React.FC<Props> = ({ getName, history }) => {
                 style={{ display: "none" }}
               />
             ) : (
-              <input
-                id="username"
-                className="form-control"
-                value={name}
-                onChange={handleChange}
-                required
-              />
-            )}
+                <input
+                  id="username"
+                  className="form-control"
+                  value={name}
+                  onChange={handleChange}
+                  required
+                />
+              )}
           </div>
           {disable ? (
             <button
@@ -75,8 +81,8 @@ const Home: React.FC<Props> = ({ getName, history }) => {
               Enter
             </button>
           ) : (
-            <button className="btn btn-outline-primary">Enter</button>
-          )}
+              <button className="btn btn-outline-primary">Enter</button>
+            )}
         </form>
         {disable && (
           <div className="row">

@@ -1,54 +1,83 @@
-[<img src="https://static.wixstatic.com/media/553d6a_6c7304f930724f46a47a88893ae7bb59~mv2.png/v1/fill/w_120,h_120,al_c,q_85,usm_4.00_1.00_0.00/Logo%20(20).webp" alt="Webpage" width="50" style="vertical-align:top" />](https://www.showwcase.com)
+# Showwcase Developer Challenge
 
-# Showwcase React Challenge
-User Form & dashboard for Educational Background - Take Home challenge
+## General idea
 
-# Stats
-There is **now a single Repo** but earlier, unfortunately did blunder in making multple repos. For sake of version control history, below are stats for them ⤵
+We hope to evaluate your programming skills in a project that has a very similar stack to ours, a preview of what you will be working with at Showwcase. 
 
-[<a href="https://wakatime.com/@GrvSingh/projects/kymxocorrq?start=2020-09-17&end=2020-09-23" alt="Repo 1 stats">Repo 1</a>](https://wakatime.com/@GrvSingh/projects/kymxocorrq?start=2020-09-17&end=2020-09-23)
+## What you will be building
 
-[<a href="https://wakatime.com/@GrvSingh/projects/tbeijhkqim?start=2020-09-17&end=2020-09-23" alt="Repo 2 stats">Repo 2</a>](https://wakatime.com/@GrvSingh/projects/tbeijhkqim?start=2020-09-17&end=2020-09-23)
+Your challenge is to create a simple web app in the technology you are applying to work in. Your task is to simulate how a user will be able to input their educational background into their Showwcase profile page. 
 
-[<a href="https://wakatime.com/@GrvSingh/projects/fpfafockzk?start=2020-09-17&end=2020-09-23" alt="Repo 3 stats">Repo 3</a>](https://wakatime.com/@GrvSingh/projects/fpfafockzk?start=2020-09-17&end=2020-09-23)
+You should not just implement the most basic solution. This is a chance to show off your abilities, creativity, and impress.
 
-## Highlights
+## Requirements
 
-- ✅ Linting checked at commits using Husky
-- 🎨 Material UI
-- 🏳 Typescript based
-- 📩 Hipo (University) and Self made - Degree and Field of Study APIs used to autocomplete
-- 🥅 All relevant educational details are mentioned and some picked from LinkedIn to support educational background
+- We use the create-react-app typescript template, you can find instructions here:
+[https://create-react-app.dev/docs/adding-typescript/](https://create-react-app.dev/docs/adding-typescript/)
+- Users must be able to enter as many educational experiences as they please;
+- When the user is typing the name of the school they went, it should be auto completed using an API call.
+- Users must be able to enter the following information: Name of School, Degree, Field of study, Start year, End Year (Or expected), Grade, a Description field, and anything else you wish to add.
 
-[![Screenshot-2020-09-24-074643.jpg](https://i.postimg.cc/Znd1HtQJ/Screenshot-2020-09-24-074643.jpg)](https://postimg.cc/p5PGV7xS)
-<br>
-[![Screenshot-2020-09-24-074926.jpg](https://i.postimg.cc/J7HVMZzS/Screenshot-2020-09-24-074926.jpg)](https://postimg.cc/z3NPkLWk)
+## Guidance and instructions
 
-## Future Scope
+- This is a free API that has data on Universities worldwide, feel free to use it or if you find something better make sure to use it. 
+[https://github.com/Hipo/university-domains-list-api](https://github.com/Hipo/university-domains-list-api)
+- Here are a few technologies we use at Showwcase and we would prefer if you used them as well should you see the need for them:
+    - Styled Components: [https://styled-components.com/](https://styled-components.com/)
+    - Styled System is a nice helper to Styled Components: [https://styled-system.com/](https://styled-system.com/)
+    - Hooks: [https://reactjs.org/docs/hooks-intro.html](https://reactjs.org/docs/hooks-intro.html)
+    - Redux: [https://redux.js.org/](https://redux.js.org/)
+    - React Modal: [https://github.com/reactjs/react-modal](https://github.com/reactjs/react-modal)
 
-- Showing icon if learning was online
-- Upload media (and not just urls) in mongoDB atlas / Cloud CDN like dropbox to be visible in Library.
-- Getting eduaction details from LinkedIn as shown below.
-[![Screenshot-2020-09-25-125333.jpg](https://i.postimg.cc/7hqT1zc3/Screenshot-2020-09-25-125333.jpg)](https://postimg.cc/JDdnMsR0)
+## What we will be looking for
 
-## Languages and Tools:
+- Functionality
+- Code Format
+- Project Structure
+- Scalability
+- Maintainability
+- Use of industry best practices
 
-<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />&nbsp;
-<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
-&nbsp;
-<img align="left" alt="CSS3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
-&nbsp;
-<img align="left" alt="JavaScript" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />&nbsp;
-<img align="left" alt="React.js" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.9.0/icons/react.svg" />
-&nbsp;
-<img align="left" alt="Git" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png" />
-&nbsp;
-<img align="left" alt="GitHub" width="26px" src="https://raw.githubusercontent.com/github/explore/78df643247d429f6cc873026c0622819ad797942/topics/github/github.png" />
-&nbsp;
-<img align="left" alt="Terminal" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png" />
-&nbsp;
-<img align="left" alt="TypeScript" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.9.0/icons/typescript.svg" />
-&nbsp;
-<img align="left" alt="TypeScript" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.9.0/icons/babel.svg" />
-&nbsp;
-<img align="left" alt="JSON" width="26px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.9.0/icons/json.svg" />
+Some specific things that we may be looking for:
+
+- Typescript if you know it
+- Atomic Design in React
+- Correct implementation of a state manager
+- Correct implementation of a navigation solution
+- Componentization
+- Communication in the repo and/or code
+- Best practices with API calls and data
+- Separation of concerns between business and UI logic
+- Frequent commits
+
+# Goals
+
+Implement the screens based off the wireframes and api above using advanced techniques and industry best practices for your platform. Note that the wireframes may not be complete, so use your best judgment for UI/UX implementation. 
+
+## Introduction and Home screen:
+
+- Static text
+- Input field for user
+- Enter button takes user to the Main screen
+
+![Image of Introduction Screen](https://github.com/Showwcase/Showwcase-Intern-React-Challenge/blob/master/MacBook_-_2.jpg)
+
+## Main screen
+
+- Dynamic text
+- Button to open up new modal to add a new education component
+- Side panel acts as a bookmark menu of the list of education added
+- Each new education added should appear above the previous, i.e. descending order of most recent
+
+![Image of Main Screen](https://github.com/Showwcase/Showwcase-Intern-React-Challenge/blob/master/MacBook_-_3.jpg)
+
+
+
+## Add education modal
+
+- Background Main screen should dim down when modal opens
+- Modal allows the user to add the relevant information and save it.
+
+![Image of Modal Screen](https://github.com/Showwcase/Showwcase-Intern-React-Challenge/blob/master/MacBook_-_4.jpg)
+
+© 2020 Showcase Creators Inc. All rights reserved. Certain information contained herein is derived from information which is protected by copyrights held by Showcase Creators Inc. This code challenge, including any parts of it, cannot be duplicated, distributed, copied, modified, used to make a derivative work or used in any way without the prior written consent of Showcase Creators Inc.

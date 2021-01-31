@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Layout from "./Layout";
+import Layout from "../Layout/Layout";
 import Modal from "react-modal";
 import "./styles.css";
-import Form from "./Form";
-import { HashLink as Link } from "react-router-hash-link";
-import Card from "./Card";
+import Form from "../Form/Form";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import { HashLink as Link } from "react-router-hash-link";
+import Card from "../Card/Card";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 interface Props {
@@ -71,14 +71,8 @@ const Dashboard: React.FC<Props> = ({ user }) => {
               className="g-font"
               smooth
               key={i}
-              to={`/dashboard/#${ed["degree"]}`}
-            >
-              <span
-                style={{ backgroundColor: "yellow" }}
-              >{`${ed["start"]} to ${ed["end"]}`}</span>
-              <br />
-              {`${ed["degree"]} | ${ed["name"]}`}
-            </Link>
+              to={`/dashboard/#${ed["name"]}`}
+            >{`${ed["degree"]} @ ${ed["name"]}`}</Link>
           </li>
         ))}
       </ul>
@@ -131,7 +125,7 @@ const Dashboard: React.FC<Props> = ({ user }) => {
           closeTimeoutMS={500}
         >
           <div className="text-center" style={{ fontWeight: "bold" }}>
-            🏫 Education Form
+            Education Form
           </div>
           <Form
             toggleModal={toggleModal}
