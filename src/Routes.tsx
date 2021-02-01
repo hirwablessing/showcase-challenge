@@ -8,7 +8,7 @@ import { selectUserFromLocalStorage } from './features/user/userSlice'
 const Routes: React.FC = () => {
   const UserFromLocalStorage = useSelector(selectUserFromLocalStorage) || ""
   useEffect(() => {
-    console.log = console.warn = () => { };
+    console.log = console.warn = console.error = () => { };
 
   }, [])
 
