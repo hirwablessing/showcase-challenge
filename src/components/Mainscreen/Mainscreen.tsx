@@ -116,6 +116,7 @@ const Dashboard: React.FC<Props> = ({ user }) => {
           onRequestClose={toggleModal}
           contentLabel="My modal"
           className="mymodal"
+          ariaHideApp={false}
           overlayClassName="myoverlay"
           closeTimeoutMS={500}
         >

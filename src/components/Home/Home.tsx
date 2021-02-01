@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../Layout/Layout";
-import { RouteComponentProps, Link, useHistory } from "react-router-dom";
+import { RouteComponentProps, Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { login, deletUserHistory, selectUserFromLocalStorage } from "../../features/user/userSlice";
@@ -8,10 +8,9 @@ import { login, deletUserHistory, selectUserFromLocalStorage } from "../../featu
 // Properties of all interface components
 // Properties of all interface components
 interface Props extends RouteComponentProps<any> {
-  getName: () => void;
 }
 
-const Home: React.FC<Props> = ({ getName, history }) => {
+const Home: React.FC<Props> = ({ history }) => {
   // viable state
   const [name, setName] = useState("");
   const [disable, setDisable] = useState(false);
@@ -33,13 +32,12 @@ const Home: React.FC<Props> = ({ getName, history }) => {
 
   useEffect(() => {
     buttonDisable();
-  }, []);
+  }, [buttonDisable]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     //dispatch an action to store the current user
     dispatch(login(String(name)))
-    getName();
     history.push("/dashboard");
     setDisable(true);
   };

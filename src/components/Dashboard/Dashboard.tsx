@@ -16,7 +16,6 @@ interface Props {
 }
 
 const Dashboard: React.FC<Props> = ({ user }) => {
-  console.log("here is the user", user);
   // viable states
   const [isOpen, setIsOpen] = useState(false);
   const [details, setDetails] = useState<any>([]);
@@ -125,6 +124,7 @@ const Dashboard: React.FC<Props> = ({ user }) => {
           isOpen={isOpen}
           onRequestClose={toggleModal}
           contentLabel="My modal"
+          ariaHideApp={false}
           className="mymodal"
           overlayClassName="myoverlay"
           closeTimeoutMS={500}

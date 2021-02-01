@@ -6,18 +6,11 @@ import { useSelector } from 'react-redux';
 import { selectUserFromLocalStorage } from './features/user/userSlice'
 
 const Routes: React.FC = () => {
-  const [name, setName] = useState<string>("");
   const UserFromLocalStorage = useSelector(selectUserFromLocalStorage) || ""
-  console.log("User from local storage", UserFromLocalStorage);
-
   useEffect(() => {
-    getName();
-  }, []);
+    console.log = console.warn = () => { };
 
-  // getting name from Home and sending it to Dashboard
-  const getName = async () => {
-    await setName(UserFromLocalStorage || "");
-  };
+  }, [])
 
   return (
     <BrowserRouter>
@@ -25,7 +18,7 @@ const Routes: React.FC = () => {
         <Route
           exact
           path="/"
-          render={(props: any) => <Home getName={getName} {...props} />}
+          render={(props: any) => <Home {...props} />}
         />
         <Route
           exact

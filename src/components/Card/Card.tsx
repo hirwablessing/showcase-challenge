@@ -19,13 +19,13 @@ const Card: React.FC<Prop> = ({ details, deleteEducation }) => {
           <h3 className="typewriter">&nbsp; Knowledge empowers you</h3>
           <h4 className="card-header g-font">Info</h4>
           <ul className="list-group">
-            <li className="list-group-item g-font">🏫 School: {x["name"]}</li>
+            <li className="list-group-item g-font"><span>🏫</span> School: {x["schoolName"]}</li>
             <li className="list-group-item g-font">🎓 Degree: {x["degree"]}</li>
             <li className="list-group-item g-font">
               🌐 E-Learning: {x["elearn"]}
             </li>
             <li className="list-group-item g-font">
-              ✔ Field of Study: {x["fos"]}
+              ✔ Field of Study: {x["fieldOfStudy"]}
             </li>
             <li className="list-group-item g-font">
               ⏳ Session: {x["start"]} to {x["end"]}

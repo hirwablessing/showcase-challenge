@@ -12,10 +12,12 @@ interface Prop {
 const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   // state varibales
   const [universities, setUniversities] = useState([]);
-  const [degree, setDegree] = useState([]);
+  const [allDegree, setAllDegree] = useState([]);
   const [fos, setFos] = useState([]);
   const [name, setName] = useState<any>({});
   const [values, setValues] = useState<any>({
+    degree: "",
+    fieldOfStudy: "",
     elearn: "",
     start: "",
     end: "",
@@ -26,7 +28,7 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   });
 
   // destructuring state variables
-  const { elearn, start, end, grade, cocur, description, media } = values;
+  const { degree, fieldOfStudy, elearn, start, end, grade, cocur, description, media } = values;
 
   // fetch all universities from API when initial loading of Component
   const fetchUniversities = async () => {
@@ -48,7 +50,7 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
         "https://showwcase-challenge.free.beeceptor.com/degrees"
       );
       const response = await rawResponse.json();
-      setDegree(response);
+      setAllDegree(response);
     } catch (error) {
       console.log(error);
     }
@@ -114,13 +116,22 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
         <label className="text-muted">
           🎓 Degree <span style={{ color: "red" }}>*</span>
         </label>
-        <Autocomplete
-          id="Degree"
-          options={degree}
-          renderInput={(params) => <TextField {...params} variant="outlined" />}
+        <select
+          className=" mt-lg-2 form-control"
+          id=""
+          name="degree"
+          value={degree}
           onChange={handleChange}
-          freeSolo
-        />
+        >
+          <option value=""></option>
+          {allDegree.map((degree, index) => (
+            <option
+              key={index + 1}
+            >
+              {degree}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="form-group">
         <label className="text-muted">🌐 E-Learning</label>
@@ -129,19 +140,30 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
           id="Online"
           inputProps={{ "aria-label": "uncontrolled-checkbox" }}
           value={elearn}
+          name="elearn"
+          onChange={handleChange}
         />
       </div>
       <div className="form-group">
         <label className="text-muted">
           🔎 Field of Study <span style={{ color: "red" }}>*</span>
         </label>
-        <Autocomplete
-          id="study"
-          options={fos}
-          renderInput={(params) => <TextField {...params} variant="outlined" />}
+        <select
+          className=" mt-lg-2 form-control"
+          id=""
+          name="fieldOfStudy"
+          value={fieldOfStudy}
           onChange={handleChange}
-          freeSolo
-        />
+        >
+          <option value=""></option>
+          {fos.map((field, index) => (
+            <option
+              key={index + 1}
+            >
+              {field}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="row">
         <div className="form-group col">
