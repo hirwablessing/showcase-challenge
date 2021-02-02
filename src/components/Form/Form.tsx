@@ -18,7 +18,6 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   const [values, setValues] = useState<any>({
     degree: "",
     fieldOfStudy: "",
-    elearn: "",
     start: "",
     end: "",
     grade: "",
@@ -28,7 +27,7 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   });
 
   // destructuring state variables
-  const { degree, fieldOfStudy, elearn, start, end, grade, cocur, description, media } = values;
+  const { degree, fieldOfStudy, start, end, grade, cocur, description, media } = values;
 
   // fetch all universities from API when initial loading of Component
   const fetchUniversities = async () => {
@@ -84,7 +83,8 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     values["name"] = name["name"];
-    values["uniqueKey"] = values["name"] + values["degree"];
+    // values["uniqueKey"] = values["name"] + values["degree"];
+
     getEducationDetails(values);
     toggleModal();
   };
@@ -132,17 +132,6 @@ const Form: React.FC<Prop> = ({ toggleModal, getEducationDetails }) => {
             </option>
           ))}
         </select>
-      </div>
-      <div className="form-group">
-        <label className="text-muted">🌐 E-Learning</label>
-        &nbsp;
-        <Checkbox
-          id="Online"
-          inputProps={{ "aria-label": "uncontrolled-checkbox" }}
-          value={elearn}
-          name="elearn"
-          onChange={handleChange}
-        />
       </div>
       <div className="form-group">
         <label className="text-muted">
